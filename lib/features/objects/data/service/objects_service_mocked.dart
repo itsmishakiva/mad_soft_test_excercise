@@ -397,7 +397,9 @@ class ObjectsServiceMocked implements ObjectsService {
     Map<String, Object?> data = jsonDecode(remoteData);
     return (data['payload'] as List<dynamic>)
         .map((e) => e as Map<String, Object?>)
-        .where((element) => (element['title'] as String).startsWith(value))
+        .where((element) => (element['title'] as String)
+            .toLowerCase()
+            .startsWith(value.toLowerCase()))
         .toList();
   }
 }

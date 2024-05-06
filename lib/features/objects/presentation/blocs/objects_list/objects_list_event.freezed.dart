@@ -19,18 +19,21 @@ mixin _$ObjectsListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadData,
+    required TResult Function(String value) search,
     required TResult Function(int? id) chooseItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadData,
+    TResult? Function(String value)? search,
     TResult? Function(int? id)? chooseItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadData,
+    TResult Function(String value)? search,
     TResult Function(int? id)? chooseItem,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$ObjectsListEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectsListEventLoadData value) loadData,
+    required TResult Function(ObjectsListEventSearch value) search,
     required TResult Function(ObjectsListEventChooseItem value) chooseItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectsListEventLoadData value)? loadData,
+    TResult? Function(ObjectsListEventSearch value)? search,
     TResult? Function(ObjectsListEventChooseItem value)? chooseItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectsListEventLoadData value)? loadData,
+    TResult Function(ObjectsListEventSearch value)? search,
     TResult Function(ObjectsListEventChooseItem value)? chooseItem,
     required TResult orElse(),
   }) =>
@@ -116,6 +122,7 @@ class _$ObjectsListEventLoadDataImpl implements ObjectsListEventLoadData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadData,
+    required TResult Function(String value) search,
     required TResult Function(int? id) chooseItem,
   }) {
     return loadData();
@@ -125,6 +132,7 @@ class _$ObjectsListEventLoadDataImpl implements ObjectsListEventLoadData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadData,
+    TResult? Function(String value)? search,
     TResult? Function(int? id)? chooseItem,
   }) {
     return loadData?.call();
@@ -134,6 +142,7 @@ class _$ObjectsListEventLoadDataImpl implements ObjectsListEventLoadData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadData,
+    TResult Function(String value)? search,
     TResult Function(int? id)? chooseItem,
     required TResult orElse(),
   }) {
@@ -147,6 +156,7 @@ class _$ObjectsListEventLoadDataImpl implements ObjectsListEventLoadData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectsListEventLoadData value) loadData,
+    required TResult Function(ObjectsListEventSearch value) search,
     required TResult Function(ObjectsListEventChooseItem value) chooseItem,
   }) {
     return loadData(this);
@@ -156,6 +166,7 @@ class _$ObjectsListEventLoadDataImpl implements ObjectsListEventLoadData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectsListEventLoadData value)? loadData,
+    TResult? Function(ObjectsListEventSearch value)? search,
     TResult? Function(ObjectsListEventChooseItem value)? chooseItem,
   }) {
     return loadData?.call(this);
@@ -165,6 +176,7 @@ class _$ObjectsListEventLoadDataImpl implements ObjectsListEventLoadData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectsListEventLoadData value)? loadData,
+    TResult Function(ObjectsListEventSearch value)? search,
     TResult Function(ObjectsListEventChooseItem value)? chooseItem,
     required TResult orElse(),
   }) {
@@ -177,6 +189,149 @@ class _$ObjectsListEventLoadDataImpl implements ObjectsListEventLoadData {
 
 abstract class ObjectsListEventLoadData implements ObjectsListEvent {
   const factory ObjectsListEventLoadData() = _$ObjectsListEventLoadDataImpl;
+}
+
+/// @nodoc
+abstract class _$$ObjectsListEventSearchImplCopyWith<$Res> {
+  factory _$$ObjectsListEventSearchImplCopyWith(
+          _$ObjectsListEventSearchImpl value,
+          $Res Function(_$ObjectsListEventSearchImpl) then) =
+      __$$ObjectsListEventSearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$ObjectsListEventSearchImplCopyWithImpl<$Res>
+    extends _$ObjectsListEventCopyWithImpl<$Res, _$ObjectsListEventSearchImpl>
+    implements _$$ObjectsListEventSearchImplCopyWith<$Res> {
+  __$$ObjectsListEventSearchImplCopyWithImpl(
+      _$ObjectsListEventSearchImpl _value,
+      $Res Function(_$ObjectsListEventSearchImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$ObjectsListEventSearchImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObjectsListEventSearchImpl implements ObjectsListEventSearch {
+  const _$ObjectsListEventSearchImpl(this.value);
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'ObjectsListEvent.search(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ObjectsListEventSearchImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObjectsListEventSearchImplCopyWith<_$ObjectsListEventSearchImpl>
+      get copyWith => __$$ObjectsListEventSearchImplCopyWithImpl<
+          _$ObjectsListEventSearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadData,
+    required TResult Function(String value) search,
+    required TResult Function(int? id) chooseItem,
+  }) {
+    return search(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadData,
+    TResult? Function(String value)? search,
+    TResult? Function(int? id)? chooseItem,
+  }) {
+    return search?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadData,
+    TResult Function(String value)? search,
+    TResult Function(int? id)? chooseItem,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ObjectsListEventLoadData value) loadData,
+    required TResult Function(ObjectsListEventSearch value) search,
+    required TResult Function(ObjectsListEventChooseItem value) chooseItem,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ObjectsListEventLoadData value)? loadData,
+    TResult? Function(ObjectsListEventSearch value)? search,
+    TResult? Function(ObjectsListEventChooseItem value)? chooseItem,
+  }) {
+    return search?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ObjectsListEventLoadData value)? loadData,
+    TResult Function(ObjectsListEventSearch value)? search,
+    TResult Function(ObjectsListEventChooseItem value)? chooseItem,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObjectsListEventSearch implements ObjectsListEvent {
+  const factory ObjectsListEventSearch(final String value) =
+      _$ObjectsListEventSearchImpl;
+
+  String get value;
+  @JsonKey(ignore: true)
+  _$$ObjectsListEventSearchImplCopyWith<_$ObjectsListEventSearchImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -248,6 +403,7 @@ class _$ObjectsListEventChooseItemImpl implements ObjectsListEventChooseItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadData,
+    required TResult Function(String value) search,
     required TResult Function(int? id) chooseItem,
   }) {
     return chooseItem(id);
@@ -257,6 +413,7 @@ class _$ObjectsListEventChooseItemImpl implements ObjectsListEventChooseItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadData,
+    TResult? Function(String value)? search,
     TResult? Function(int? id)? chooseItem,
   }) {
     return chooseItem?.call(id);
@@ -266,6 +423,7 @@ class _$ObjectsListEventChooseItemImpl implements ObjectsListEventChooseItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadData,
+    TResult Function(String value)? search,
     TResult Function(int? id)? chooseItem,
     required TResult orElse(),
   }) {
@@ -279,6 +437,7 @@ class _$ObjectsListEventChooseItemImpl implements ObjectsListEventChooseItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ObjectsListEventLoadData value) loadData,
+    required TResult Function(ObjectsListEventSearch value) search,
     required TResult Function(ObjectsListEventChooseItem value) chooseItem,
   }) {
     return chooseItem(this);
@@ -288,6 +447,7 @@ class _$ObjectsListEventChooseItemImpl implements ObjectsListEventChooseItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ObjectsListEventLoadData value)? loadData,
+    TResult? Function(ObjectsListEventSearch value)? search,
     TResult? Function(ObjectsListEventChooseItem value)? chooseItem,
   }) {
     return chooseItem?.call(this);
@@ -297,6 +457,7 @@ class _$ObjectsListEventChooseItemImpl implements ObjectsListEventChooseItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ObjectsListEventLoadData value)? loadData,
+    TResult Function(ObjectsListEventSearch value)? search,
     TResult Function(ObjectsListEventChooseItem value)? chooseItem,
     required TResult orElse(),
   }) {

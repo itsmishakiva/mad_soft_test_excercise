@@ -2,4 +2,6 @@ import 'package:mad_soft_test_excercise/features/objects/domain/entities/object_
 
 abstract interface class ObjectsRepository {
   Future<List<ObjectEntity>> getData();
+
+  Future<List<ObjectEntity>> search(String value);
 }

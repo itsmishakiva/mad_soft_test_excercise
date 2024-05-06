@@ -12,4 +12,10 @@ class ObjectsRepositoryImpl implements ObjectsRepository {
     final serviceResult = await _service.getData();
     return serviceResult.map((e) => ObjectEntity.fromJson(e)).toList();
   }
+
+  @override
+  Future<List<ObjectEntity>> search(String value) async {
+    final serviceResult = await _service.search(value);
+    return serviceResult.map((e) => ObjectEntity.fromJson(e)).toList();
+  }
 }

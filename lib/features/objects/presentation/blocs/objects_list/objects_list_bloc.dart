@@ -17,14 +17,41 @@ class ObjectsListBloc extends Bloc<ObjectsListEvent, ObjectsListState> {
         ),
       ),
     );
-    on<ObjectsListEventLoadData>((event, emit) async {
-      final deviceSpace = await getStorageSpace(
-        fractionDigits: 1,
-        lowOnSpaceThreshold: 0,
-      );
-      emit(ObjectsListState.data(await _useCase.getData(), (deviceSpace.freeSize.split(' ')[0], deviceSpace.totalSize.split(' ')[0])));
-    });
+    on<ObjectsListEventLoadData>(
+      (event, emit) async {
+        storageSpace = await getStorageSpace(
+          fractionDigits: 1,
+          lowOnSpaceThreshold: 0,
+        );
+        emit(
+          ObjectsListState.data(
+            await _useCase.getData(),
+            (
+              storageSpace.freeSize.split(' ')[0],
+              storageSpace.totalSize.split(' ')[0]
+            ),
+          ),
+        );
+      },
+    );
+    on<ObjectsListEventSearch>(
+      (event, emit) async {
+        var result = await _useCase.search(event.value);
+        if (result != null) {
+          emit(
+            ObjectsListStateData(
+              result,
+              (
+                storageSpace.freeSize.split(' ')[0],
+                storageSpace.totalSize.split(' ')[0]
+              ),
+            ),
+          );
+        }
+      },
+    );
   }
 
   final ObjectsUseCase _useCase;
+  late final StorageSpace storageSpace;
 }

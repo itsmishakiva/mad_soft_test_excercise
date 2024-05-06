@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mad_soft_test_excercise/extensions/build_context_extension.dart';
 import 'package:mad_soft_test_excercise/features/objects/presentation/blocs/objects_list/objects_list_bloc.dart';
+import 'package:mad_soft_test_excercise/features/objects/presentation/blocs/objects_list/objects_list_event.dart';
 import 'package:mad_soft_test_excercise/features/objects/presentation/blocs/objects_list/objects_list_state.dart';
 import 'package:mad_soft_test_excercise/features/objects/presentation/widgets/object_list_tile.dart';
 
@@ -28,9 +29,11 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
     scrollController.addListener(() {
       if (scrollController.offset <= 56 && scrollController.offset >= 0) {
         animationController.animateTo(scrollController.offset / 56);
-      } else if (scrollController.offset < 0 && animationController.value != 0) {
+      } else if (scrollController.offset < 0 &&
+          animationController.value != 0) {
         animationController.animateTo(0);
-      } else if (scrollController.offset > 56 && animationController.value != 1) {
+      } else if (scrollController.offset > 56 &&
+          animationController.value != 1) {
         animationController.animateTo(1);
       }
     });
@@ -78,7 +81,8 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
                                   scrollController.animateTo(
                                     0,
                                     duration: Duration(
-                                      milliseconds: scrollController.offset ~/ 5,
+                                      milliseconds:
+                                          scrollController.offset ~/ 5,
                                     ),
                                     curve: Curves.linear,
                                   );
@@ -127,6 +131,11 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
                     children: [
                       Expanded(
                         child: TextField(
+                          onChanged: (value) {
+                            context.read<ObjectsListBloc>().add(
+                                  ObjectsListEvent.search(value),
+                                );
+                          },
                           decoration: InputDecoration(
                             isDense: true,
                             border: InputBorder.none,

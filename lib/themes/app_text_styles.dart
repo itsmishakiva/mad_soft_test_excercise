@@ -61,8 +61,8 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
     return AppTextStyles(
       header1: header1 ?? this.header1,
       header2: header2 ?? this.header2,
-      bodyText: header3 ?? this.bodyText,
-      bodyText1: headerBold3 ?? this.bodyText1,
+      bodyText: header3 ?? bodyText,
+      bodyText1: headerBold3 ?? bodyText1,
     );
   }
 
