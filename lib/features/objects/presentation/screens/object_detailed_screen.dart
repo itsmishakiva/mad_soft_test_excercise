@@ -45,21 +45,21 @@ class _ObjectDetailedScreenState extends State<ObjectDetailedScreen> {
           child: Padding(
             padding: const EdgeInsets.only(bottom: 64.0),
             child: BlocBuilder<ObjectDetailedBloc, ObjectDetailedState>(
-              builder: (context, state) {
-                return Stack(
-                  children: [
-                    ClipRect(
-                      child: Align(
-                        heightFactor: 0.98,
-                        alignment: Alignment.bottomCenter,
-                        child: Image.asset(
-                          'assets/images/map.png',
-                          color: context.colors.backgroundPrimary,
-                          colorBlendMode: BlendMode.modulate,
-                        ),
+                builder: (context, state) {
+              return Stack(
+                children: [
+                  ClipRect(
+                    child: Align(
+                      heightFactor: 0.98,
+                      alignment: Alignment.bottomCenter,
+                      child: Image.asset(
+                        'assets/images/map.png',
+                        color: context.colors.backgroundPrimary,
+                        colorBlendMode: BlendMode.modulate,
                       ),
                     ),
-                    if (state is ObjectDetailedStateData)
+                  ),
+                  if (state is ObjectDetailedStateData)
                     ...List.generate(
                       state.object.points.length,
                       (index) => Positioned(
@@ -83,10 +83,9 @@ class _ObjectDetailedScreenState extends State<ObjectDetailedScreen> {
                         ),
                       ),
                     ),
-                  ],
-                );
-              }
-            ),
+                ],
+              );
+            }),
           ),
         ),
       ),

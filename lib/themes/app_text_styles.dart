@@ -10,7 +10,7 @@ class AppTextStylesRealization extends AppTextStyles {
             fontFamily: 'Nunito',
             fontWeight: FontWeight.w400,
             fontSize: 32.0,
-            height: 40.0/ 32.0,
+            height: 40.0 / 32.0,
             color: colors.textPrimary,
           ),
           header2: TextStyle(

@@ -6,7 +6,6 @@ import 'package:mad_soft_test_excercise/features/objects/domain/use_cases/object
 import 'package:mad_soft_test_excercise/features/objects/domain/use_cases/objects_use_case_impl.dart';
 import 'package:mad_soft_test_excercise/features/objects/presentation/blocs/objects_list/objects_list_bloc.dart';
 import 'package:mad_soft_test_excercise/features/objects/presentation/blocs/objects_list/objects_list_event.dart';
-import 'package:mad_soft_test_excercise/features/objects/presentation/screens/objects_list_screen.dart';
 import 'package:provider/provider.dart';
 
 class ObjectListProvider extends StatelessWidget {

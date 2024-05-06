@@ -4,5 +4,6 @@ part 'root_navigation_event.freezed.dart';
 
 @freezed
 sealed class RootNavigationEvent with _$RootNavigationEvent {
-  const factory RootNavigationEvent.changeIndex(int index) = RootNavigationEventChangeIndex;
+  const factory RootNavigationEvent.changeIndex(int index) =
+      RootNavigationEventChangeIndex;
 }

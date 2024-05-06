@@ -5,8 +5,7 @@ import 'package:mad_soft_test_excercise/features/objects/domain/repository/objec
 class ObjectsRepositoryImpl implements ObjectsRepository {
   final ObjectsService _service;
 
-  ObjectsRepositoryImpl({required ObjectsService service})
-      : _service = service;
+  ObjectsRepositoryImpl({required ObjectsService service}) : _service = service;
 
   @override
   Future<List<ObjectEntity>> getData() async {

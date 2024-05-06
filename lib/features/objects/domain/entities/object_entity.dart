@@ -9,10 +9,8 @@ part 'object_entity.g.dart';
 class ObjectEntity with _$ObjectEntity {
   const factory ObjectEntity({
     required String title,
-    @JsonKey(name: 'remaining_points')
-    required int remainingPoints,
-    @JsonKey(name: 'total_points_count')
-    required int totalPoints,
+    @JsonKey(name: 'remaining_points') required int remainingPoints,
+    @JsonKey(name: 'total_points_count') required int totalPoints,
     required List<MapPoint> points,
   }) = _ObjectEntity;
 
