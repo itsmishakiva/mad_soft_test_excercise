@@ -10,10 +10,12 @@ import 'package:provider/provider.dart';
 class ObjectListTile extends StatelessWidget {
   const ObjectListTile({
     required this.object,
+    required this.deviceSpace,
     super.key,
   });
 
   final ObjectEntity object;
+  final (String, String) deviceSpace;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,6 @@ class ObjectListTile extends StatelessWidget {
         context.read<GoRouter>().push('/objects_list/object_detailed');
       },
       child: Container(
-        height: 120,
         decoration: BoxDecoration(
           color: context.colors.backgroundSecondary,
           borderRadius: BorderRadius.circular(16.0),
@@ -55,49 +56,58 @@ class ObjectListTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Отснято сегодня',
-                          style: context.textStyles.header3,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          '${object.totalPoints - object.remainingPoints}/${object.totalPoints} доступно',
-                          style: context.textStyles.header3,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+            Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Отснято сегодня:',
+                      style: context.textStyles.bodyText,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Отснято сегодня',
-                          style: context.textStyles.header3,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          '${object.totalPoints - object.remainingPoints}/${object.totalPoints} доступно',
-                          style: context.textStyles.header3,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                    RichText(
+                      text: TextSpan(
+                        text: '${object.totalPoints - object.remainingPoints}',
+                        style: context.textStyles.bodyText1,
+                        children: [
+                          TextSpan(
+                            text: ' / ${object.totalPoints} доступно',
+                            style: context.textStyles.bodyText,
+                          )
+                        ],
+                      ),
                     ),
+                  ],
+                ),
+                const SizedBox(width: 16.0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Сьемка займет:',
+                        style: context.textStyles.bodyText,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: '${deviceSpace.$1} ГБ',
+                          style: context.textStyles.bodyText1,
+                          children: [
+                            TextSpan(
+                              text: ' / ${deviceSpace.$2} ГБ доступно',
+                              style: context.textStyles.bodyText,
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             )
           ],
         ),

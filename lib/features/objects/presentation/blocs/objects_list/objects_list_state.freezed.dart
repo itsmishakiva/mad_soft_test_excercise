@@ -20,21 +20,27 @@ mixin _$ObjectsListState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String? message) error,
-    required TResult Function(List<ObjectEntity> data, int? chosenItem) data,
+    required TResult Function(List<ObjectEntity> data,
+            (String, String) deviceSpace, int? chosenItem)
+        data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String? message)? error,
-    TResult? Function(List<ObjectEntity> data, int? chosenItem)? data,
+    TResult? Function(List<ObjectEntity> data, (String, String) deviceSpace,
+            int? chosenItem)?
+        data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String? message)? error,
-    TResult Function(List<ObjectEntity> data, int? chosenItem)? data,
+    TResult Function(List<ObjectEntity> data, (String, String) deviceSpace,
+            int? chosenItem)?
+        data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,7 +129,9 @@ class _$ObjectsListStateLoadingImpl implements ObjectsListStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String? message) error,
-    required TResult Function(List<ObjectEntity> data, int? chosenItem) data,
+    required TResult Function(List<ObjectEntity> data,
+            (String, String) deviceSpace, int? chosenItem)
+        data,
   }) {
     return loading();
   }
@@ -133,7 +141,9 @@ class _$ObjectsListStateLoadingImpl implements ObjectsListStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String? message)? error,
-    TResult? Function(List<ObjectEntity> data, int? chosenItem)? data,
+    TResult? Function(List<ObjectEntity> data, (String, String) deviceSpace,
+            int? chosenItem)?
+        data,
   }) {
     return loading?.call();
   }
@@ -143,7 +153,9 @@ class _$ObjectsListStateLoadingImpl implements ObjectsListStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String? message)? error,
-    TResult Function(List<ObjectEntity> data, int? chosenItem)? data,
+    TResult Function(List<ObjectEntity> data, (String, String) deviceSpace,
+            int? chosenItem)?
+        data,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -259,7 +271,9 @@ class _$ObjectsListStateErrorImpl implements ObjectsListStateError {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String? message) error,
-    required TResult Function(List<ObjectEntity> data, int? chosenItem) data,
+    required TResult Function(List<ObjectEntity> data,
+            (String, String) deviceSpace, int? chosenItem)
+        data,
   }) {
     return error(message);
   }
@@ -269,7 +283,9 @@ class _$ObjectsListStateErrorImpl implements ObjectsListStateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String? message)? error,
-    TResult? Function(List<ObjectEntity> data, int? chosenItem)? data,
+    TResult? Function(List<ObjectEntity> data, (String, String) deviceSpace,
+            int? chosenItem)?
+        data,
   }) {
     return error?.call(message);
   }
@@ -279,7 +295,9 @@ class _$ObjectsListStateErrorImpl implements ObjectsListStateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String? message)? error,
-    TResult Function(List<ObjectEntity> data, int? chosenItem)? data,
+    TResult Function(List<ObjectEntity> data, (String, String) deviceSpace,
+            int? chosenItem)?
+        data,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -339,7 +357,8 @@ abstract class _$$ObjectsListStateDataImplCopyWith<$Res> {
           $Res Function(_$ObjectsListStateDataImpl) then) =
       __$$ObjectsListStateDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ObjectEntity> data, int? chosenItem});
+  $Res call(
+      {List<ObjectEntity> data, (String, String) deviceSpace, int? chosenItem});
 }
 
 /// @nodoc
@@ -354,6 +373,7 @@ class __$$ObjectsListStateDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? deviceSpace = null,
     Object? chosenItem = freezed,
   }) {
     return _then(_$ObjectsListStateDataImpl(
@@ -361,6 +381,10 @@ class __$$ObjectsListStateDataImplCopyWithImpl<$Res>
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<ObjectEntity>,
+      null == deviceSpace
+          ? _value.deviceSpace
+          : deviceSpace // ignore: cast_nullable_to_non_nullable
+              as (String, String),
       freezed == chosenItem
           ? _value.chosenItem
           : chosenItem // ignore: cast_nullable_to_non_nullable
@@ -372,7 +396,8 @@ class __$$ObjectsListStateDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ObjectsListStateDataImpl implements ObjectsListStateData {
-  const _$ObjectsListStateDataImpl(final List<ObjectEntity> data,
+  const _$ObjectsListStateDataImpl(
+      final List<ObjectEntity> data, this.deviceSpace,
       [this.chosenItem])
       : _data = data;
 
@@ -385,11 +410,13 @@ class _$ObjectsListStateDataImpl implements ObjectsListStateData {
   }
 
   @override
+  final (String, String) deviceSpace;
+  @override
   final int? chosenItem;
 
   @override
   String toString() {
-    return 'ObjectsListState.data(data: $data, chosenItem: $chosenItem)';
+    return 'ObjectsListState.data(data: $data, deviceSpace: $deviceSpace, chosenItem: $chosenItem)';
   }
 
   @override
@@ -398,13 +425,15 @@ class _$ObjectsListStateDataImpl implements ObjectsListStateData {
         (other.runtimeType == runtimeType &&
             other is _$ObjectsListStateDataImpl &&
             const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.deviceSpace, deviceSpace) ||
+                other.deviceSpace == deviceSpace) &&
             (identical(other.chosenItem, chosenItem) ||
                 other.chosenItem == chosenItem));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_data), chosenItem);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_data), deviceSpace, chosenItem);
 
   @JsonKey(ignore: true)
   @override
@@ -419,9 +448,11 @@ class _$ObjectsListStateDataImpl implements ObjectsListStateData {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String? message) error,
-    required TResult Function(List<ObjectEntity> data, int? chosenItem) data,
+    required TResult Function(List<ObjectEntity> data,
+            (String, String) deviceSpace, int? chosenItem)
+        data,
   }) {
-    return data(this.data, chosenItem);
+    return data(this.data, deviceSpace, chosenItem);
   }
 
   @override
@@ -429,9 +460,11 @@ class _$ObjectsListStateDataImpl implements ObjectsListStateData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String? message)? error,
-    TResult? Function(List<ObjectEntity> data, int? chosenItem)? data,
+    TResult? Function(List<ObjectEntity> data, (String, String) deviceSpace,
+            int? chosenItem)?
+        data,
   }) {
-    return data?.call(this.data, chosenItem);
+    return data?.call(this.data, deviceSpace, chosenItem);
   }
 
   @override
@@ -439,11 +472,13 @@ class _$ObjectsListStateDataImpl implements ObjectsListStateData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String? message)? error,
-    TResult Function(List<ObjectEntity> data, int? chosenItem)? data,
+    TResult Function(List<ObjectEntity> data, (String, String) deviceSpace,
+            int? chosenItem)?
+        data,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(this.data, chosenItem);
+      return data(this.data, deviceSpace, chosenItem);
     }
     return orElse();
   }
@@ -484,10 +519,12 @@ class _$ObjectsListStateDataImpl implements ObjectsListStateData {
 }
 
 abstract class ObjectsListStateData implements ObjectsListState {
-  const factory ObjectsListStateData(final List<ObjectEntity> data,
+  const factory ObjectsListStateData(
+      final List<ObjectEntity> data, final (String, String) deviceSpace,
       [final int? chosenItem]) = _$ObjectsListStateDataImpl;
 
   List<ObjectEntity> get data;
+  (String, String) get deviceSpace;
   int? get chosenItem;
   @JsonKey(ignore: true)
   _$$ObjectsListStateDataImplCopyWith<_$ObjectsListStateDataImpl>

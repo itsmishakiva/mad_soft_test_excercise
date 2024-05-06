@@ -9,7 +9,7 @@ class AppLightColors extends AppColors {
           accent: const Color(0xFF3A60F3),
           accentSecondary: const Color(0xFF5779F7),
           textPrimary: const Color(0xFF4B425F),
-          textSecondary: const Color(0xFFDEDADB),
+          textSecondary: const Color(0xFF6B6C6C),
           shadow1: const Color(0x4DA0A2D8),
           shadow2: const Color(0x26B4C4FC),
         );

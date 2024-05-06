@@ -15,21 +15,23 @@ class AppTextStylesRealization extends AppTextStyles {
           ),
           header2: TextStyle(
             fontFamily: 'Nunito',
-            fontWeight: FontWeight.w800,
-            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+            fontSize: 16.0,
+            height: 24 / 16,
             color: colors.textPrimary,
           ),
-          header3: TextStyle(
+          bodyText: TextStyle(
             fontFamily: 'Nunito',
-            fontWeight: FontWeight.w600,
-            fontSize: 16.0,
-            color: colors.textPrimary,
+            fontWeight: FontWeight.w500,
+            fontSize: 11.0,
+            color: colors.textSecondary,
             overflow: TextOverflow.ellipsis,
           ),
-          headerBold3: TextStyle(
+          bodyText1: TextStyle(
             fontFamily: 'Nunito',
-            fontWeight: FontWeight.w800,
-            fontSize: 16.0,
+            fontWeight: FontWeight.w400,
+            fontSize: 14.0,
+            height: 20 / 14,
             color: colors.textPrimary,
           ),
         );
@@ -39,14 +41,14 @@ class AppTextStylesRealization extends AppTextStyles {
 class AppTextStyles extends ThemeExtension<AppTextStyles> {
   final TextStyle header1;
   final TextStyle header2;
-  final TextStyle header3;
-  final TextStyle headerBold3;
+  final TextStyle bodyText;
+  final TextStyle bodyText1;
 
   const AppTextStyles({
     required this.header1,
     required this.header2,
-    required this.header3,
-    required this.headerBold3,
+    required this.bodyText,
+    required this.bodyText1,
   });
 
   @override
@@ -59,8 +61,8 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
     return AppTextStyles(
       header1: header1 ?? this.header1,
       header2: header2 ?? this.header2,
-      header3: header3 ?? this.header3,
-      headerBold3: headerBold3 ?? this.headerBold3,
+      bodyText: header3 ?? this.bodyText,
+      bodyText1: headerBold3 ?? this.bodyText1,
     );
   }
 
@@ -78,8 +80,8 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
     return AppTextStyles(
       header1: TextStyle.lerp(header1, typedOther.header1, t)!,
       header2: TextStyle.lerp(header2, typedOther.header2, t)!,
-      header3: TextStyle.lerp(header3, typedOther.header3, t)!,
-      headerBold3: TextStyle.lerp(headerBold3, typedOther.headerBold3, t)!,
+      bodyText: TextStyle.lerp(bodyText, typedOther.bodyText, t)!,
+      bodyText1: TextStyle.lerp(bodyText1, typedOther.bodyText1, t)!,
     );
   }
 }

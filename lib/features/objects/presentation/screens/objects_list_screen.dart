@@ -118,7 +118,6 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
                 collapsedHeight: 0,
                 toolbarHeight: 0,
                 flexibleSpace: Container(
-                  height: 47,
                   decoration: BoxDecoration(
                     color: context.colors.backgroundSecondary,
                     borderRadius: BorderRadius.circular(10.0),
@@ -162,6 +161,7 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
                     padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 12.0),
                     child: ObjectListTile(
                       object: state.data[index],
+                      deviceSpace: state.deviceSpace,
                     ),
                   ),
                   childCount: state.data.length,
