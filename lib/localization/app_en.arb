@@ -1,0 +1,11 @@
+{
+    "signInInfo": "Sign in to your account",
+    "signIn" : "Sign In",
+    "usernameOrEmail" : "Username or email",
+    "password" : "Password",
+    "forgotPassword" : "Forgot your password?",
+    "wrongCredentials" : "Wrong credentials",
+    "noConnection" : "No connection",
+    "serverError" : "Server error",
+    "unknownError" : "Unknown error occured. Try again."
+}
