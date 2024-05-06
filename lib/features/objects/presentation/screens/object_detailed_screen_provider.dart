@@ -16,7 +16,7 @@ class ObjectDetailedScreenProvider extends StatelessWidget {
     return BlocProvider<ObjectDetailedBloc>(
       create: (context) => ObjectDetailedBloc(
         state: ObjectDetailedStateData(
-          (context.read<ObjectsListBloc>() as ObjectsListStateData)
+          (context.read<ObjectsListBloc>().state as ObjectsListStateData)
               .data
               .where((object) => object.hashCode == objectId)
               .first,

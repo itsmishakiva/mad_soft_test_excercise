@@ -21,9 +21,11 @@ ObjectEntity _$ObjectEntityFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ObjectEntity {
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'remaining_points')
   int get remainingPoints => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_points_count')
   int get totalPoints => throw _privateConstructorUsedError;
-  List<(int, int)> get points => throw _privateConstructorUsedError;
+  List<MapPoint> get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,9 +41,9 @@ abstract class $ObjectEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      int remainingPoints,
-      int totalPoints,
-      List<(int, int)> points});
+      @JsonKey(name: 'remaining_points') int remainingPoints,
+      @JsonKey(name: 'total_points_count') int totalPoints,
+      List<MapPoint> points});
 }
 
 /// @nodoc
@@ -78,7 +80,7 @@ class _$ObjectEntityCopyWithImpl<$Res, $Val extends ObjectEntity>
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
-              as List<(int, int)>,
+              as List<MapPoint>,
     ) as $Val);
   }
 }
@@ -93,9 +95,9 @@ abstract class _$$ObjectEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      int remainingPoints,
-      int totalPoints,
-      List<(int, int)> points});
+      @JsonKey(name: 'remaining_points') int remainingPoints,
+      @JsonKey(name: 'total_points_count') int totalPoints,
+      List<MapPoint> points});
 }
 
 /// @nodoc
@@ -130,7 +132,7 @@ class __$$ObjectEntityImplCopyWithImpl<$Res>
       points: null == points
           ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
-              as List<(int, int)>,
+              as List<MapPoint>,
     ));
   }
 }
@@ -140,9 +142,9 @@ class __$$ObjectEntityImplCopyWithImpl<$Res>
 class _$ObjectEntityImpl implements _ObjectEntity {
   const _$ObjectEntityImpl(
       {required this.title,
-      required this.remainingPoints,
-      required this.totalPoints,
-      required final List<(int, int)> points})
+      @JsonKey(name: 'remaining_points') required this.remainingPoints,
+      @JsonKey(name: 'total_points_count') required this.totalPoints,
+      required final List<MapPoint> points})
       : _points = points;
 
   factory _$ObjectEntityImpl.fromJson(Map<String, dynamic> json) =>
@@ -151,12 +153,14 @@ class _$ObjectEntityImpl implements _ObjectEntity {
   @override
   final String title;
   @override
+  @JsonKey(name: 'remaining_points')
   final int remainingPoints;
   @override
+  @JsonKey(name: 'total_points_count')
   final int totalPoints;
-  final List<(int, int)> _points;
+  final List<MapPoint> _points;
   @override
-  List<(int, int)> get points {
+  List<MapPoint> get points {
     if (_points is EqualUnmodifiableListView) return _points;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_points);
@@ -202,9 +206,9 @@ class _$ObjectEntityImpl implements _ObjectEntity {
 abstract class _ObjectEntity implements ObjectEntity {
   const factory _ObjectEntity(
       {required final String title,
-      required final int remainingPoints,
-      required final int totalPoints,
-      required final List<(int, int)> points}) = _$ObjectEntityImpl;
+      @JsonKey(name: 'remaining_points') required final int remainingPoints,
+      @JsonKey(name: 'total_points_count') required final int totalPoints,
+      required final List<MapPoint> points}) = _$ObjectEntityImpl;
 
   factory _ObjectEntity.fromJson(Map<String, dynamic> json) =
       _$ObjectEntityImpl.fromJson;
@@ -212,11 +216,13 @@ abstract class _ObjectEntity implements ObjectEntity {
   @override
   String get title;
   @override
+  @JsonKey(name: 'remaining_points')
   int get remainingPoints;
   @override
+  @JsonKey(name: 'total_points_count')
   int get totalPoints;
   @override
-  List<(int, int)> get points;
+  List<MapPoint> get points;
   @override
   @JsonKey(ignore: true)
   _$$ObjectEntityImplCopyWith<_$ObjectEntityImpl> get copyWith =>

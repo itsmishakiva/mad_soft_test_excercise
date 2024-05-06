@@ -44,45 +44,48 @@ class _ObjectDetailedScreenState extends State<ObjectDetailedScreen> {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 64.0),
-            child: Stack(
-              children: [
-                ClipRect(
-                  child: Align(
-                    heightFactor: 0.98,
-                    alignment: Alignment.bottomCenter,
-                    child: Image.asset(
-                      'assets/images/map.png',
-                      color: context.colors.backgroundPrimary,
-                      colorBlendMode: BlendMode.modulate,
+            child: BlocBuilder<ObjectDetailedBloc, ObjectDetailedState>(
+              builder: (context, state) {
+                return Stack(
+                  children: [
+                    ClipRect(
+                      child: Align(
+                        heightFactor: 0.98,
+                        alignment: Alignment.bottomCenter,
+                        child: Image.asset(
+                          'assets/images/map.png',
+                          color: context.colors.backgroundPrimary,
+                          colorBlendMode: BlendMode.modulate,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                ...List.generate(
-                  10,
-                  (index) => Positioned(
-                    top: Random(DateTime.now().microsecond).nextDouble() *
-                        MediaQuery.of(context).size.width /
-                        2,
-                    left: Random(DateTime.now().microsecond).nextDouble() *
-                        MediaQuery.of(context).size.width,
-                    child: AnimatedBuilder(
-                        animation: transformationController,
-                        builder: (context, child) {
-                          double scaleFactor = (1 /
-                              (1 +
-                                  exp(-transformationController.value
-                                      .getMaxScaleOnAxis())));
-                          return Transform.scale(
-                            scale: 1 + 8 - scaleFactor * 8,
-                            child: child,
-                          );
-                        },
-                        child: ObjectMapTile(
-                          done: Random(DateTime.now().microsecond).nextBool(),
-                        )),
-                  ),
-                ),
-              ],
+                    if (state is ObjectDetailedStateData)
+                    ...List.generate(
+                      state.object.points.length,
+                      (index) => Positioned(
+                        top: state.object.points[index].y.toDouble() / 3,
+                        left: state.object.points[index].x.toDouble() / 3,
+                        child: AnimatedBuilder(
+                          animation: transformationController,
+                          builder: (context, child) {
+                            double scaleFactor = (1 /
+                                (1 +
+                                    exp(-transformationController.value
+                                        .getMaxScaleOnAxis())));
+                            return Transform.scale(
+                              scale: 1 + 8 - scaleFactor * 8,
+                              child: child,
+                            );
+                          },
+                          child: ObjectMapTile(
+                            done: state.object.points[index].checked,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }
             ),
           ),
         ),
