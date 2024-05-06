@@ -1,11 +1,8 @@
 {
-    "signInInfo": "Вход в учетную запись",
-    "signIn" : "Войти",
-    "usernameOrEmail" : "Имя пользователя или E-mail",
-    "password" : "Пароль",
-    "forgotPassword" : "Забыли пароль?",
-    "wrongCredentials" : "Неверные учетные данные",
-    "noConnection" : "Потеряно соединение с интернетом",
-    "serverError" : "Ошибка на сервере",
-    "unknownError" : "Неизвестная ошибка. Попробуйте снова."
+    "objects": "Объекты",
+    "filmedToday" : "Отснято сегодня",
+    "filmingWillTake" : "Съемка займет",
+    "gb" : "ГБ",
+    "available" : "доступно",
+    "search" : "Найти"
 }

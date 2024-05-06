@@ -399,7 +399,7 @@ class ObjectsServiceMocked implements ObjectsService {
         .map((e) => e as Map<String, Object?>)
         .where((element) => (element['title'] as String)
             .toLowerCase()
-            .startsWith(value.toLowerCase()))
+            .contains(value.toLowerCase()))
         .toList();
   }
 }

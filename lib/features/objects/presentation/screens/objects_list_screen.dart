@@ -20,8 +20,8 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
     vsync: this,
     duration: Duration.zero,
   );
-
   final scrollController = ScrollController();
+  final focusNode = FocusNode();
 
   @override
   void initState() {
@@ -37,6 +37,14 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
         animationController.animateTo(1);
       }
     });
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    animationController.dispose();
+    focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -77,8 +85,8 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
                                   ? 0
                                   : (animationController.value - 0.5) * 2,
                               child: InkWell(
-                                onTap: () {
-                                  scrollController.animateTo(
+                                onTap: () async {
+                                  await scrollController.animateTo(
                                     0,
                                     duration: Duration(
                                       milliseconds:
@@ -86,6 +94,7 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
                                     ),
                                     curve: Curves.linear,
                                   );
+                                  focusNode.requestFocus();
                                 },
                                 child: SvgPicture.asset(
                                   'assets/icons/search.svg',
@@ -99,7 +108,7 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
                                   (10000 * (animationController.value)).toInt(),
                             ),
                           Text(
-                            'Обьекты',
+                            context.locale!.objects,
                             style: context.textStyles.header1.copyWith(
                                 fontSize: 32 - animationController.value * 10),
                           ),
@@ -131,12 +140,19 @@ class _ObjectsListScreenState extends State<ObjectsListScreen>
                     children: [
                       Expanded(
                         child: TextField(
+                          focusNode: focusNode,
                           onChanged: (value) {
                             context.read<ObjectsListBloc>().add(
                                   ObjectsListEvent.search(value),
                                 );
                           },
+                          style: context.textStyles.bodyText1
+                              .copyWith(fontSize: 17.0),
                           decoration: InputDecoration(
+                            hintText: '${context.locale!.search}...',
+                            hintStyle: context.textStyles.bodyText1.copyWith(
+                                color: context.colors.textSecondary,
+                                fontSize: 17.0),
                             isDense: true,
                             border: InputBorder.none,
                             icon: SvgPicture.asset(

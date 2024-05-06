@@ -19,6 +19,9 @@ class ObjectsUseCaseImpl implements ObjectsUseCase {
 
   @override
   Future<List<ObjectEntity>?> search(String value) async {
+    //В этом методе реализована задержка, для того чтобы не
+    //посылать слишком много запросов, дожидаемся пока
+    //юзер прекратит печатать
     previousValue = value;
     bool send = false;
     await Future.delayed(const Duration(milliseconds: 200), () async {

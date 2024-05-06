@@ -10,6 +10,7 @@ class AppLightColors extends AppColors {
           accentSecondary: const Color(0xFF5779F7),
           textPrimary: const Color(0xFF4B425F),
           textSecondary: const Color(0xFF6B6C6C),
+          success: const Color(0xFF18C056),
           shadow1: const Color(0x4DA0A2D8),
           shadow2: const Color(0x26B4C4FC),
         );
@@ -23,6 +24,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color accentSecondary;
   final Color textPrimary;
   final Color textSecondary;
+  final Color success;
   final Color shadow1;
   final Color shadow2;
 
@@ -34,6 +36,7 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.accentSecondary,
     required this.textPrimary,
     required this.textSecondary,
+    required this.success,
     required this.shadow1,
     required this.shadow2,
   });
@@ -47,6 +50,7 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? accentSecondary,
     Color? textPrimary,
     Color? textSecondary,
+    Color? success,
     Color? shadow1,
     Color? shadow2,
   }) {
@@ -58,6 +62,7 @@ class AppColors extends ThemeExtension<AppColors> {
       accentSecondary: accentSecondary ?? this.accentSecondary,
       textPrimary: textPrimary ?? this.textPrimary,
       textSecondary: textSecondary ?? this.textSecondary,
+      success: success ?? this.success,
       shadow1: shadow1 ?? this.shadow1,
       shadow2: shadow2 ?? this.shadow2,
     );
@@ -85,6 +90,7 @@ class AppColors extends ThemeExtension<AppColors> {
           Color.lerp(accentSecondary, typedOther.accentSecondary, t)!,
       textPrimary: Color.lerp(textPrimary, typedOther.textPrimary, t)!,
       textSecondary: Color.lerp(textSecondary, typedOther.textSecondary, t)!,
+      success: Color.lerp(success, typedOther.success, t)!,
       shadow1: Color.lerp(shadow1, typedOther.shadow1, t)!,
       shadow2: Color.lerp(shadow2, typedOther.shadow2, t)!,
     );

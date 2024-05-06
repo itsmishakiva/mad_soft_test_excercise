@@ -62,7 +62,7 @@ class ObjectListTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Отснято сегодня:',
+                      '${context.locale!.filmedToday}:',
                       style: context.textStyles.bodyText,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -73,7 +73,8 @@ class ObjectListTile extends StatelessWidget {
                         style: context.textStyles.bodyText1,
                         children: [
                           TextSpan(
-                            text: ' / ${object.totalPoints} доступно',
+                            text:
+                                ' / ${object.totalPoints} ${context.locale!.available}',
                             style: context.textStyles.bodyText,
                           )
                         ],
@@ -87,18 +88,19 @@ class ObjectListTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Сьемка займет:',
+                        '${context.locale!.filmingWillTake}:',
                         style: context.textStyles.bodyText,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       RichText(
                         text: TextSpan(
-                          text: '${deviceSpace.$1} ГБ',
+                          text: '${deviceSpace.$1} ${context.locale!.gb}',
                           style: context.textStyles.bodyText1,
                           children: [
                             TextSpan(
-                              text: ' / ${deviceSpace.$2} ГБ доступно',
+                              text:
+                                  ' / ${deviceSpace.$2} ${context.locale!.gb} ${context.locale!.available}',
                               style: context.textStyles.bodyText,
                             )
                           ],

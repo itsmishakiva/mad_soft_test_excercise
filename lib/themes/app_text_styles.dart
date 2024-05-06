@@ -7,28 +7,28 @@ class AppTextStylesRealization extends AppTextStyles {
     required AppColors colors,
   }) : super(
           header1: TextStyle(
-            fontFamily: 'Nunito',
+            fontFamily: 'Roboto',
             fontWeight: FontWeight.w400,
             fontSize: 32.0,
             height: 40.0 / 32.0,
             color: colors.textPrimary,
           ),
           header2: TextStyle(
-            fontFamily: 'Nunito',
+            fontFamily: 'Roboto',
             fontWeight: FontWeight.w500,
             fontSize: 16.0,
             height: 24 / 16,
             color: colors.textPrimary,
           ),
           bodyText: TextStyle(
-            fontFamily: 'Nunito',
+            fontFamily: 'Roboto',
             fontWeight: FontWeight.w500,
             fontSize: 11.0,
             color: colors.textSecondary,
             overflow: TextOverflow.ellipsis,
           ),
           bodyText1: TextStyle(
-            fontFamily: 'Nunito',
+            fontFamily: 'Roboto',
             fontWeight: FontWeight.w400,
             fontSize: 14.0,
             height: 20 / 14,

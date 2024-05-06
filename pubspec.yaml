@@ -20,6 +20,9 @@ dependencies:
   flutter_svg: ^2.0.10+1
   provider: ^6.1.2
   storage_space: ^1.1.0
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +33,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
 
 flutter:
+  generate: true
 
   uses-material-design: true
 
@@ -37,4 +41,16 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/roboto/Roboto-Black.ttf
+        - asset: fonts/roboto/Roboto-Bold.ttf
+        - asset: fonts/roboto/Roboto-Medium.ttf
+        - asset: fonts/roboto/Roboto-Regular.ttf
+        - asset: fonts/roboto/Roboto-Thin.ttf
+        - asset: fonts/roboto/Roboto-Light.ttf
+
+
 

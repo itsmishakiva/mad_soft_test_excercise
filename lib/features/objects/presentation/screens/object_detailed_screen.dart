@@ -19,6 +19,12 @@ class _ObjectDetailedScreenState extends State<ObjectDetailedScreen> {
   final transformationController = TransformationController();
 
   @override
+  void dispose() {
+    transformationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AppScaffold(
       appBar: PreferredSize(
@@ -30,6 +36,7 @@ class _ObjectDetailedScreenState extends State<ObjectDetailedScreen> {
           bloc: context.read<ObjectDetailedBloc>(),
           builder: (context, state) {
             return AppBar(
+              centerTitle: false,
               title: Text(
                 state is ObjectDetailedStateData ? state.object.title : '',
               ),
@@ -77,7 +84,7 @@ class _ObjectDetailedScreenState extends State<ObjectDetailedScreen> {
                               child: child,
                             );
                           },
-                          child: ObjectMapTile(
+                          child: _ObjectMapTile(
                             done: state.object.points[index].checked,
                           ),
                         ),
@@ -93,9 +100,8 @@ class _ObjectDetailedScreenState extends State<ObjectDetailedScreen> {
   }
 }
 
-class ObjectMapTile extends StatelessWidget {
-  const ObjectMapTile({
-    super.key,
+class _ObjectMapTile extends StatelessWidget {
+  const _ObjectMapTile({
     this.done = false,
   });
 
@@ -105,10 +111,12 @@ class ObjectMapTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: 6.0,
-      backgroundColor:
-          (done ? Colors.green : Colors.deepPurple).withOpacity(0.2),
+      backgroundColor: Color.lerp(
+          done ? context.colors.success : context.colors.accent,
+          Colors.white,
+          0.7),
       child: CircleAvatar(
-        backgroundColor: done ? Colors.green : Colors.deepPurple,
+        backgroundColor: done ? context.colors.success : context.colors.accent,
         radius: 5.0,
         child: Padding(
           padding: const EdgeInsets.all(2.0),
