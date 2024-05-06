@@ -11,6 +11,6 @@ sealed class ObjectsListState with _$ObjectsListState {
       ObjectsListStateError;
 
   const factory ObjectsListState.data(
-      List<ObjectEntity> data, (String, String) deviceSpace,
-      [int? chosenItem]) = ObjectsListStateData;
+          List<ObjectEntity> data, String deviceSpace, [int? chosenItem]) =
+      ObjectsListStateData;
 }

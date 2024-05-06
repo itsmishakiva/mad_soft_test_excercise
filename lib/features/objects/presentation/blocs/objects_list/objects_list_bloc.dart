@@ -26,10 +26,7 @@ class ObjectsListBloc extends Bloc<ObjectsListEvent, ObjectsListState> {
         emit(
           ObjectsListState.data(
             await _useCase.getData(),
-            (
-              storageSpace.freeSize.split(' ')[0],
-              storageSpace.totalSize.split(' ')[0]
-            ),
+            storageSpace.freeSize.split(' ')[0],
           ),
         );
       },
@@ -41,10 +38,7 @@ class ObjectsListBloc extends Bloc<ObjectsListEvent, ObjectsListState> {
           emit(
             ObjectsListStateData(
               result,
-              (
-                storageSpace.freeSize.split(' ')[0],
-                storageSpace.totalSize.split(' ')[0]
-              ),
+              storageSpace.freeSize.split(' ')[0],
             ),
           );
         }

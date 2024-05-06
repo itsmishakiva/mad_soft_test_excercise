@@ -15,7 +15,7 @@ class ObjectListTile extends StatelessWidget {
   });
 
   final ObjectEntity object;
-  final (String, String) deviceSpace;
+  final String deviceSpace;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,7 @@ class ObjectListTile extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(width: 16.0),
+                const SizedBox(width: 32.0),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,12 +95,12 @@ class ObjectListTile extends StatelessWidget {
                       ),
                       RichText(
                         text: TextSpan(
-                          text: '${deviceSpace.$1} ${context.locale!.gb}',
+                          text: '${object.totalPoints * 5} ${context.locale!.gb}',
                           style: context.textStyles.bodyText1,
                           children: [
                             TextSpan(
                               text:
-                                  ' / ${deviceSpace.$2} ${context.locale!.gb} ${context.locale!.available}',
+                                  ' / $deviceSpace ${context.locale!.gb} ${context.locale!.available}',
                               style: context.textStyles.bodyText,
                             )
                           ],
